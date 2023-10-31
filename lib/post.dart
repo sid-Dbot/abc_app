@@ -31,9 +31,10 @@ class Post extends StatelessWidget {
       body: Container(
         color: Colors.amber,
         child: CustomText(
-            label: 'Video',
+            label:
+                'https://www.youtube.com/watch?v=Pmg2PtMwhgs&pp=ygUPa3Jpc2hpIHR2IG5lcGFs',
             color: Colors.white,
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: FontWeight.normal),
         height: 280,
         width: double.infinity,
