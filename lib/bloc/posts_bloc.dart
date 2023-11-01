@@ -17,9 +17,10 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
       var response = await http
           .get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
 
-      var b = jsonDecode(response.body);
+      a = postFromJson(response.body);
+      print(a.length);
 
-      print(b);
+      emit(PostsFetched(a));
     });
   }
 }

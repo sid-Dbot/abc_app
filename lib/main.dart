@@ -1,3 +1,4 @@
+import 'package:abc_app/bloc/grid_items_bloc.dart';
 import 'package:abc_app/bloc/posts_bloc.dart';
 import 'package:abc_app/homePage.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: BlocProvider(
-        create: (context) => PostsBloc(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => PostsBloc(),
+          ),
+          BlocProvider(
+            create: (context) => GridItemsBloc(),
+          ),
+        ],
         child: MyHomePage(),
       ),
     );
