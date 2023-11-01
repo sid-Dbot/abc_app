@@ -1,5 +1,6 @@
 import 'package:abc_app/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Post extends StatelessWidget {
   const Post({super.key});
@@ -28,16 +29,23 @@ class Post extends StatelessWidget {
         ],
         title: Text('Post'),
       ),
-      body: Container(
-        color: Colors.amber,
-        child: CustomText(
-            label:
-                'https://www.youtube.com/watch?v=Pmg2PtMwhgs&pp=ygUPa3Jpc2hpIHR2IG5lcGFs',
-            color: Colors.white,
-            fontSize: 15,
-            fontWeight: FontWeight.normal),
-        height: 280,
-        width: double.infinity,
+      body: Column(
+        children: [
+          Container(
+            color: Colors.amber,
+            child: YoutubePlayer(
+                showVideoProgressIndicator: true,
+                progressIndicatorColor: Colors.green.shade600,
+                progressColors: ProgressBarColors(
+                    handleColor: Colors.green.shade600,
+                    playedColor: Colors.green.shade600),
+                controller: YoutubePlayerController(
+                    initialVideoId:
+                        'https://www.youtube.com/watch?v=n1Y4HROvFME')),
+            height: 280,
+            width: double.infinity,
+          ),
+        ],
       ),
     );
   }

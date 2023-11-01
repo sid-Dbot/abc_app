@@ -1,7 +1,9 @@
-import 'dart:math';
-
+import 'package:abc_app/bloc/posts_bloc.dart';
+import 'package:abc_app/bloc/posts_bloc.dart';
+import 'package:abc_app/bloc/posts_bloc.dart';
 import 'package:abc_app/post.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -80,6 +82,7 @@ class MyHomePage extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => Post(),
                                 ));
+                            context.read<PostsBloc>().add(GetPosts());
                           },
                           child: GridItem()),
                       itemCount: 11,
