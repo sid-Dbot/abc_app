@@ -76,12 +76,14 @@ class MyHomePage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Center(
-                                child: Text(
-                                  'Trending',
-                                  style: GoogleFonts.dmSans(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w500),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    'Trending',
+                                    style: GoogleFonts.dmSans(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                               state.selectedTab == index
