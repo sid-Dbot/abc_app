@@ -1,6 +1,8 @@
 import 'package:abc_app/bloc/grid_items_bloc.dart';
-import 'package:abc_app/bloc/posts_bloc.dart';
+
 import 'package:abc_app/bloc/tab_bar_bloc.dart';
+import 'package:abc_app/cubit/get_posts_cubit.dart';
+import 'package:abc_app/models/post.dart';
 
 import 'package:abc_app/post.dart';
 import 'package:flutter/material.dart';
@@ -76,14 +78,12 @@ class MyHomePage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Center(
-                                  child: Text(
-                                    'Trending',
-                                    style: GoogleFonts.dmSans(
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                              Center(
+                                child: Text(
+                                  'Trending',
+                                  style: GoogleFonts.dmSans(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
                               state.selectedTab == index
@@ -125,12 +125,17 @@ class MyHomePage extends StatelessWidget {
                           }
 
                           return GestureDetector(
-                              onTap: () {
-                                context.read<PostsBloc>().add(GetPosts());
+                              onTap: () async {
+                                // get api integration
+                                final data =
+                                    await BlocProvider.of<GetPostsCubit>(
+                                            context)
+                                        .getPosts();
+
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Post()));
+                                        builder: (context) => PostScreen()));
                               },
                               child: GridItem(
                                 index: count,
@@ -167,9 +172,14 @@ class GridItem extends StatelessWidget {
                 Text(
                   'NABIN KRISHI PRABIDHI || Nepal Television 2079-04-23',
                   style: GoogleFonts.dmSans(
+                      shadows: [
+                        Shadow(color: Colors.black, offset: Offset(0, -1))
+                      ],
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
-                      decoration: TextDecoration.underline),
+                      color: Colors.transparent,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),

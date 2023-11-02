@@ -1,6 +1,7 @@
 import 'package:abc_app/bloc/grid_items_bloc.dart';
-import 'package:abc_app/bloc/posts_bloc.dart';
+
 import 'package:abc_app/bloc/tab_bar_bloc.dart';
+import 'package:abc_app/cubit/get_posts_cubit.dart';
 import 'package:abc_app/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => PostsBloc(),
+            create: (context) => GetPostsCubit(),
           ),
           BlocProvider(
             create: (context) => GridItemsBloc(),

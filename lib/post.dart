@@ -1,13 +1,10 @@
-import 'package:abc_app/bloc/posts_bloc.dart';
 import 'package:abc_app/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class Post extends StatelessWidget {
-  Post();
-
+class PostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +40,7 @@ class Post extends StatelessWidget {
                     handleColor: Colors.green.shade600,
                     playedColor: Colors.green.shade600),
                 controller:
-                    YoutubePlayerController(initialVideoId: 'n1Y4HROvFME')),
+                    YoutubePlayerController(initialVideoId: 'Pmg2PtMwhgs')),
             height: 280,
             width: double.infinity,
           ),
