@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
               scale: 4,
             ),
             SizedBox(
-              width: 10,
+              width: 20,
             ),
             Image.asset(
               'assets/share.png',
