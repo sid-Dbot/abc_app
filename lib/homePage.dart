@@ -1,5 +1,6 @@
 import 'package:abc_app/bloc/grid_items_bloc.dart';
 import 'package:abc_app/bloc/posts_bloc.dart';
+import 'package:abc_app/bloc/tab_bar_bloc.dart';
 
 import 'package:abc_app/post.dart';
 import 'package:flutter/material.dart';
@@ -59,19 +60,48 @@ class MyHomePage extends StatelessWidget {
                     ],
                     color: Colors.white,
                     border: Border.all(color: Colors.white)),
-                child: ListView.builder(
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        'Trending',
-                        style: GoogleFonts.dmSans(
-                            fontSize: 11, fontWeight: FontWeight.w500),
+                child: BlocBuilder<TabBarBloc, TabBarState>(
+                  builder: (context, state) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 16),
+                        child: GestureDetector(
+                          onTap: () {
+                            context
+                                .read<TabBarBloc>()
+                                .add(ChangeTab(tab: index));
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Center(
+                                child: Text(
+                                  'Trending',
+                                  style: GoogleFonts.dmSans(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              state.selectedTab == index
+                                  ? Container(
+                                      height: 3,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                          color: Colors.green.shade600,
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                    )
+                                  : Container()
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  itemCount: 15,
-                  scrollDirection: Axis.horizontal,
+                      itemCount: 15,
+                      scrollDirection: Axis.horizontal,
+                    );
+                  },
                 ),
               ),
               Expanded(

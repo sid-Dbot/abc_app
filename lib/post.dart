@@ -42,9 +42,8 @@ class Post extends StatelessWidget {
                 progressColors: ProgressBarColors(
                     handleColor: Colors.green.shade600,
                     playedColor: Colors.green.shade600),
-                controller: YoutubePlayerController(
-                    initialVideoId:
-                        'https://www.youtube.com/watch?v=n1Y4HROvFME')),
+                controller:
+                    YoutubePlayerController(initialVideoId: 'n1Y4HROvFME')),
             height: 280,
             width: double.infinity,
           ),
